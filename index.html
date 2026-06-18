@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ória — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <!-- Botao Menu Mobile -->
+  <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Abrir menu">☰</button>
+
+  <!-- Overlay Mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <div class="app-layout">
+
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Logo principal Direção B — CSS puro -->
+      <div style="display:flex;align-items:center;gap:11px;padding:0 24px;margin-bottom:48px;">
+        <div style="position:relative;width:42px;height:42px;flex:none;">
+          <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 200deg,#25D6C8,#5B4EFF 36%,#A79CFF 64%,#25D6C8);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));"></div>
+          <div style="position:absolute;top:50%;right:-4px;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:#25D6C8;box-shadow:0 0 11px 2px rgba(37,214,200,0.9);"></div>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#EDEAFF;line-height:1;">Ória</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Inicio
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Planos
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
+          </svg>
+          Investimentos
+        </a>
+        <a href="#" class="sidebar-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          Chat IA
+        </a>
+      </nav>
+
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">ML</div>
+        <div class="sidebar-user-info">
+          <span class="sidebar-user-name">Maria Lima</span>
+          <span class="sidebar-user-role">Investidora Consciente</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ========== CONTEUDO PRINCIPAL ========== -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="page-header">
+        <h1>Bom dia, Maria</h1>
+        <p>Aqui estão seus insights financeiros de hoje</p>
+      </header>
+
+      <!-- Alerta -->
+      <div class="alert-card">
+        <div class="alert-icon">!</div>
+        <div class="alert-content">
+          <div class="alert-label">Alerta da Ória</div>
+          <div class="alert-text">Sua fatura do cartão vence em 3 dias. Você ainda não separou R$ 1.240 para pagamento.</div>
+          <a href="#" class="alert-link">Ver detalhes &rarr;</a>
+        </div>
+        <button class="alert-btn">Resolver agora</button>
+      </div>
+
+      <!-- XP / Nivel -->
+      <div class="xp-card">
+        <div class="xp-info">
+          <div class="xp-title">Nível 7 - Investidor Consciente</div>
+          <div class="xp-subtitle">1.840 / 2.500 XP para o próximo nível</div>
+        </div>
+        <div class="xp-bar-container">
+          <div class="xp-bar-bg">
+            <div class="xp-bar-fill"></div>
+          </div>
+        </div>
+        <div class="xp-badge">+120 XP hoje</div>
+      </div>
+
+      <!-- Cards de Estatisticas -->
+      <div class="stats-grid">
+        <div class="stat-card teal">
+          <div class="stat-label">Saldo Total</div>
+          <div class="stat-value">R$ 18.450</div>
+          <div class="stat-change positive">+2.3% este mês</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-label">Gastos do Mês</div>
+          <div class="stat-value">R$ 3.280</div>
+          <div class="stat-change warning">68% do limite</div>
+        </div>
+        <div class="stat-card indigo">
+          <div class="stat-label">Investimentos</div>
+          <div class="stat-value">R$ 52.100</div>
+          <div class="stat-change positive">+R$ 880 este mês</div>
+        </div>
+        <div class="stat-card lavender">
+          <div class="stat-label">Meta: Sair de Casa</div>
+          <div class="stat-value">42%</div>
+          <div class="stat-change neutral">R$ 21k / R$ 50k</div>
+        </div>
+      </div>
+
+      <!-- Insights -->
+      <h2 class="section-title">Insights da Ória</h2>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <p class="insight-text">
+            <span class="insight-dot"></span>Gastos com delivery +40% esta semana.
+          </p>
+          <a href="#" class="insight-link">Ver detalhes &rarr;</a>
+        </div>
+        <div class="insight-card">
+          <p class="insight-text">
+            <span class="insight-dot"></span>Você pode investir R$ 300 a mais este mês.
+          </p>
+          <a href="#" class="insight-link">Ver detalhes &rarr;</a>
+        </div>
+        <div class="insight-card">
+          <p class="insight-text">
+            <span class="insight-dot"></span>Selic subiu - reveja alocação em renda fixa.
+          </p>
+          <a href="#" class="insight-link">Ver detalhes &rarr;</a>
+        </div>
+      </div>
+
+     <h2 class="section-title">Transações Recentes</h2>
+      <div class="transactions-list">
+        <div class="transaction-item">
+          <div class="transaction-icon">
+            <img src="logo-ifood.png" alt="iFood">
+          </div>
+          <div class="transaction-info">
+            <div class="transaction-name">iFood</div>
+            <div class="transaction-category">Alimentação</div>
+          </div>
+          <div class="transaction-value negative">-R$ 89,90</div>
+        </div>
+        <div class="transaction-item">
+          <div class="transaction-icon">
+            <img src="logo-nubank.png" alt="Nubank">
+          </div>
+          <div class="transaction-info">
+            <div class="transaction-name">Nubank</div>
+            <div class="transaction-category">Transferência recebida</div>
+          </div>
+          <div class="transaction-value positive">+R$ 2.000,00</div>
+        </div>
+        <div class="transaction-item">
+          <div class="transaction-icon">
+            <img src="logo-spotify.png" alt="Spotify">
+          </div>
+          <div class="transaction-info">
+            <div class="transaction-name">Spotify</div>
+            <div class="transaction-category">Assinaturas</div>
+          </div>
+          <div class="transaction-value negative">-R$ 21,90</div>
+        </div>
+        <div class="transaction-item">
+          <div class="transaction-icon">
+            <img src="logo-amazon.png" alt="Amazon">
+          </div>
+          <div class="transaction-info">
+            <div class="transaction-name">Amazon Prime</div>
+            <div class="transaction-category">Assinaturas</div>
+          </div>
+          <div class="transaction-value negative">-R$ 14,90</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('sidebarOverlay').classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
