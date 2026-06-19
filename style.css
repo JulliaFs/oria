@@ -1,0 +1,588 @@
+/* ============================================
+   ÓRIA — Inteligência Financeira Pessoal
+   Identidade Visual: Órbita Nítida
+   Tipografia: Cormorant Garamond + Hanken Grotesk
+   ============================================ */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  /* Backgrounds */
+  --bg-primary: #0A0B1A;
+  --bg-secondary: #0D0E22;
+  --bg-card: #12132B;
+  --bg-sidebar: #0C0D20;
+  --border-card: #1A1B3A;
+  --border-subtle: #242550;
+
+  /* Paleta Principal */
+  --accent-indigo: #5B4EFF;
+  --accent-indigo-glow: rgba(91, 78, 255, 0.2);
+  --accent-lavender: #A79CFF;
+  --accent-teal: #25D6C8;
+  --accent-teal-glow: rgba(37, 214, 200, 0.15);
+
+  /* Secundarias */
+  --accent-orange: #F59E0B;
+  --accent-orange-light: #FBBF24;
+  --accent-red: #EF4444;
+
+  /* Texto */
+  --text-primary: #F6F6FA;
+  --text-secondary: #9594B0;
+  --text-muted: #6B6B8D;
+
+  /* Tipografia */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-card); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-indigo); }
+
+/* ---------- Layout ---------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 220px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-card);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 40;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  margin-bottom: 48px;
+}
+
+.sidebar-logo-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Logo text — mantido para fallback */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  color: var(--text-primary);
+  background-color: rgba(91, 78, 255, 0.06);
+}
+
+.sidebar-link.active {
+  color: var(--text-primary);
+  background: linear-gradient(90deg, rgba(91, 78, 255, 0.12), transparent);
+  border-left-color: var(--accent-indigo);
+}
+
+.sidebar-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.sidebar-user {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-indigo), var(--accent-teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.sidebar-user-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.sidebar-user-role {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+/* ---------- Main Content ---------- */
+.main-content {
+  flex: 1;
+  margin-left: 220px;
+  padding: 36px 44px;
+}
+
+/* ---------- Page Header ---------- */
+.page-header {
+  margin-bottom: 28px;
+}
+
+/* H1 usa Cormorant Garamond — fidelidade a identidade */
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+.page-header p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ---------- Alerta ---------- */
+.alert-card {
+  background: linear-gradient(135deg, rgba(91, 78, 255, 0.1), rgba(37, 214, 200, 0.05));
+  border: 1px solid rgba(91, 78, 255, 0.3);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.alert-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5B4EFF, #25D6C8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #F6F6FA;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.alert-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #5B4EFF, #25D6C8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.alert-content { flex: 1; }
+
+.alert-text {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.alert-link {
+  font-size: 0.78rem;
+  color: var(--accent-teal);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 3px;
+  display: inline-block;
+  transition: opacity 0.2s;
+}
+
+.alert-link:hover { opacity: 0.75; }
+
+.alert-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #5B4EFF, #25D6C8);
+  color: #F6F6FA;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  transition: opacity 0.2s;
+}
+
+.alert-btn:hover { opacity: 0.85; }
+
+/* ---------- XP Card ---------- */
+.xp-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.xp-info { min-width: 200px; }
+
+.xp-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.xp-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.xp-bar-container { flex: 1; min-width: 160px; }
+
+.xp-bar-bg {
+  width: 100%;
+  height: 5px;
+  background-color: var(--border-card);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  width: 73.6%;
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-lavender));
+  border-radius: 3px;
+}
+
+.xp-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  background: var(--accent-teal-glow);
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  border: 1px solid rgba(37, 214, 200, 0.2);
+}
+
+/* ---------- Stats Grid ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.stat-card.teal::before    { background: var(--accent-teal); }
+.stat-card.orange::before  { background: var(--accent-orange); }
+.stat-card.indigo::before  { background: var(--accent-indigo); }
+.stat-card.lavender::before { background: var(--accent-lavender); }
+
+.stat-label {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Valores dos cards usam Cormorant Garamond — impacto visual */
+.stat-value {
+  font-family: var(--font-body);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.stat-change {
+  font-size: 0.76rem;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.stat-change.positive { color: var(--accent-teal); }
+.stat-change.warning  { color: var(--accent-orange-light); }
+.stat-change.neutral  { color: var(--text-secondary); }
+
+/* ---------- Section Title ---------- */
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  letter-spacing: 0.2px;
+}
+
+/* ---------- Insights ---------- */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.insight-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+}
+
+.insight-card:hover { border-color: var(--accent-indigo); }
+
+.insight-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent-teal);
+  margin-right: 8px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.insight-text {
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.insight-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--accent-teal);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.insight-link:hover { opacity: 0.75; }
+
+/* ---------- Transações ---------- */
+.transactions-list {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 0 20px;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.transaction-item:last-child { border-bottom: none; }
+
+.transaction-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-lavender);
+  flex-shrink: 0;
+}
+
+.transaction-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.transaction-info { flex: 1; }
+
+.transaction-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.transaction-category {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.transaction-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.transaction-value.negative { color: var(--accent-red); }
+.transaction-value.positive { color: var(--accent-teal); }
+
+/* ---------- Mobile Menu ---------- */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 16px; left: 16px;
+  z-index: 50;
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+}
+
+.mobile-menu-btn.hidden {
+  display: none !important;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 35;
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 1200px) {
+  .main-content { padding: 32px 28px; }
+}
+
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .insights-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn { display: flex; }
+
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.open { display: block; }
+
+  .main-content {
+    margin-left: 0;
+    padding: 80px 20px 32px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .insights-grid { grid-template-columns: 1fr; }
+
+  .alert-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .alert-btn { width: 100%; text-align: center; }
+
+  .xp-card { flex-direction: column; align-items: flex-start; }
+
+  .page-header h1 { font-size: 1.8rem; }
+  .stat-value { font-size: 1.55rem; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .main-content { padding: 76px 16px 24px; }
+}
