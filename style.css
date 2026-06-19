@@ -6,6 +6,14 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
+.logo-ring {
+  position: relative;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, #25D6C8, #5B4EFF 36%, #A79CFF 64%, #25D6C8);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+}
+
 ::selection {
   background: rgba(91, 78, 255, 0.35);
 }
